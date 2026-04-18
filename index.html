@@ -28,7 +28,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 40px;
+      margin-bottom: 60px;
     }
 
     .title-box {
@@ -178,14 +178,14 @@
       const val = parseFloat(document.getElementById('sqm-input').value);
       const el = document.getElementById('tsubo-result');
       if (isNaN(val) || val < 0) { el.textContent = ''; return; }
-      el.textContent = (val / SQM_PER_TSUBO).toFixed(1);
+      el.textContent = (val / SQM_PER_TSUBO).toFixed(2);
     }
 
     function convertToSqm() {
       const val = parseFloat(document.getElementById('tsubo-input').value);
       const el = document.getElementById('sqm-result');
       if (isNaN(val) || val < 0) { el.textContent = ''; return; }
-      el.textContent = (val * SQM_PER_TSUBO).toFixed(1);
+      el.textContent = (val * SQM_PER_TSUBO).toFixed(2);
     }
 
     function clearAll() {
