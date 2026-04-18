@@ -158,13 +158,15 @@
   <script>
     const SQM_PER_TSUBO = 3.30579;
 
-    document.getElementById('sqm-input').addEventListener('input', () => {
+    document.getElementById('sqm-input').addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return;
       const val = parseFloat(document.getElementById('sqm-input').value);
       const el = document.getElementById('tsubo-result');
       el.textContent = (!isNaN(val) && val >= 0) ? (val / SQM_PER_TSUBO).toFixed(2) : '';
     });
 
-    document.getElementById('tsubo-input').addEventListener('input', () => {
+    document.getElementById('tsubo-input').addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return;
       const val = parseFloat(document.getElementById('tsubo-input').value);
       const el = document.getElementById('sqm-result');
       el.textContent = (!isNaN(val) && val >= 0) ? (val * SQM_PER_TSUBO).toFixed(2) : '';
