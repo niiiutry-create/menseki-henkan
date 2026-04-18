@@ -104,22 +104,6 @@
 
     .sup { font-size: 13px; vertical-align: super; }
 
-    .btn {
-      width: 100%;
-      margin-right: 48px;
-      height: 52px;
-      border: none;
-      border-radius: 14px;
-      background: #3a8ee6;
-      color: #fff;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-
-    .btn:hover { background: #2a7ad4; }
-    .btn:active { background: #1a68c0; }
 
     .result-row {
       display: flex;
@@ -157,7 +141,6 @@
           <input type="number" id="sqm-input" placeholder="" min="0">
           <span class="unit">m<span class="sup">2</span></span>
         </div>
-        <button class="btn" onclick="convertToTsubo()">変換</button>
         <div class="result-row">
           <div class="result-box" id="tsubo-result"></div>
           <span class="unit">坪</span>
@@ -170,7 +153,6 @@
           <input type="number" id="tsubo-input" placeholder="" min="0">
           <span class="unit">坪</span>
         </div>
-        <button class="btn" onclick="convertToSqm()">変換</button>
         <div class="result-row">
           <div class="result-box" id="sqm-result"></div>
           <span class="unit">m<span class="sup">2</span></span>
