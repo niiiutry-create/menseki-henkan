@@ -27,25 +27,37 @@
     .header {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 12px;
       margin-bottom: 40px;
     }
 
     .title-box {
       background: #6abf40;
       border-radius: 8px;
-      padding: 10px 32px;
+      padding: 10px 24px;
       font-size: 28px;
       font-weight: bold;
       color: #000;
-      width: 100%;
+      flex: 1;
       text-align: center;
     }
 
-    .calc-icon {
-      font-size: 40px;
-      margin-left: auto;
+    .clear-btn {
+      height: 52px;
+      padding: 0 20px;
+      border: none;
+      border-radius: 14px;
+      background: #e05a5a;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.15s;
+      flex-shrink: 0;
     }
+
+    .clear-btn:hover { background: #c94444; }
+    .clear-btn:active { background: #b03030; }
 
     .converters {
       display: flex;
@@ -127,6 +139,7 @@
   <div class="card">
     <div class="header">
       <div class="title-box">面積変換</div>
+      <button class="clear-btn" onclick="clearAll()">クリア</button>
     </div>
 
     <div class="converters">
@@ -165,14 +178,21 @@
       const val = parseFloat(document.getElementById('sqm-input').value);
       const el = document.getElementById('tsubo-result');
       if (isNaN(val) || val < 0) { el.textContent = ''; return; }
-      el.textContent = (val / SQM_PER_TSUBO).toFixed(4);
+      el.textContent = (val / SQM_PER_TSUBO).toFixed(1);
     }
 
     function convertToSqm() {
       const val = parseFloat(document.getElementById('tsubo-input').value);
       const el = document.getElementById('sqm-result');
       if (isNaN(val) || val < 0) { el.textContent = ''; return; }
-      el.textContent = (val * SQM_PER_TSUBO).toFixed(4);
+      el.textContent = (val * SQM_PER_TSUBO).toFixed(1);
+    }
+
+    function clearAll() {
+      document.getElementById('sqm-input').value = '';
+      document.getElementById('tsubo-input').value = '';
+      document.getElementById('tsubo-result').textContent = '';
+      document.getElementById('sqm-result').textContent = '';
     }
 
     document.getElementById('sqm-input').addEventListener('keydown', e => { if (e.key === 'Enter') convertToTsubo(); });
