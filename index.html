@@ -27,19 +27,24 @@
     .header {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 60px;
+      margin-bottom: 80px;
     }
 
     .title-box {
       background: #6abf40;
       border-radius: 8px;
-      padding: 10px 24px;
+      padding: 10px 32px;
       font-size: 28px;
       font-weight: bold;
       color: #000;
-      flex: 1;
+      width: 100%;
       text-align: center;
+    }
+
+    .clear-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 24px;
     }
 
     .clear-btn {
@@ -139,6 +144,9 @@
   <div class="card">
     <div class="header">
       <div class="title-box">面積変換</div>
+    </div>
+
+    <div class="clear-row">
       <button class="clear-btn" onclick="clearAll()">クリア</button>
     </div>
 
