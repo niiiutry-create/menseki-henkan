@@ -77,7 +77,7 @@
       gap: 16px;
     }
 
-    .input-row {
+    .input-row, .result-row {
       display: flex;
       align-items: center;
       gap: 8px;
@@ -104,31 +104,9 @@
 
     .sup { font-size: 13px; vertical-align: super; }
 
-    .btn {
-      width: 100%;
-      margin-right: 48px;
-      height: 52px;
-      border: none;
-      border-radius: 14px;
-      background: #3a8ee6;
-      color: #fff;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-
-    .btn:hover { background: #2a7ad4; }
-    .btn:active { background: #1a68c0; }
-
-    .result-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
     .result-box {
       flex: 1;
+      min-width: 0;
       height: 52px;
       border-radius: 10px;
       background: #d0d0d0;
@@ -143,7 +121,7 @@
 <body>
   <div class="card">
     <div class="header">
-      <div class="title-box">面積変換</div>
+      <div class="title-box">面積変換アプリ</div>
     </div>
 
     <div class="clear-row">
@@ -157,7 +135,6 @@
           <input type="number" id="sqm-input" placeholder="" min="0">
           <span class="unit">m<span class="sup">2</span></span>
         </div>
-        <button class="btn" onclick="convertToTsubo()">変換</button>
         <div class="result-row">
           <div class="result-box" id="tsubo-result"></div>
           <span class="unit">坪</span>
@@ -170,7 +147,6 @@
           <input type="number" id="tsubo-input" placeholder="" min="0">
           <span class="unit">坪</span>
         </div>
-        <button class="btn" onclick="convertToSqm()">変換</button>
         <div class="result-row">
           <div class="result-box" id="sqm-result"></div>
           <span class="unit">m<span class="sup">2</span></span>
@@ -182,19 +158,17 @@
   <script>
     const SQM_PER_TSUBO = 3.30579;
 
-    function convertToTsubo() {
+    document.getElementById('sqm-input').addEventListener('input', () => {
       const val = parseFloat(document.getElementById('sqm-input').value);
       const el = document.getElementById('tsubo-result');
-      if (isNaN(val) || val < 0) { el.textContent = ''; return; }
-      el.textContent = (val / SQM_PER_TSUBO).toFixed(2);
-    }
+      el.textContent = (!isNaN(val) && val >= 0) ? (val / SQM_PER_TSUBO).toFixed(2) : '';
+    });
 
-    function convertToSqm() {
+    document.getElementById('tsubo-input').addEventListener('input', () => {
       const val = parseFloat(document.getElementById('tsubo-input').value);
       const el = document.getElementById('sqm-result');
-      if (isNaN(val) || val < 0) { el.textContent = ''; return; }
-      el.textContent = (val * SQM_PER_TSUBO).toFixed(2);
-    }
+      el.textContent = (!isNaN(val) && val >= 0) ? (val * SQM_PER_TSUBO).toFixed(2) : '';
+    });
 
     function clearAll() {
       document.getElementById('sqm-input').value = '';
@@ -202,9 +176,6 @@
       document.getElementById('tsubo-result').textContent = '';
       document.getElementById('sqm-result').textContent = '';
     }
-
-    document.getElementById('sqm-input').addEventListener('keydown', e => { if (e.key === 'Enter') convertToTsubo(); });
-    document.getElementById('tsubo-input').addEventListener('keydown', e => { if (e.key === 'Enter') convertToSqm(); });
   </script>
 </body>
 </html>
