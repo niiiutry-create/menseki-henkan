@@ -13,42 +13,39 @@
       background: #1a1a2e;
       color: #eee;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
       min-height: 100vh;
-      padding-top: 120px;
+      padding-top: 60px;
     }
 
     .card {
       background: #16213e;
       border-radius: 24px;
-      padding: 72px 32px 18px;
+      padding: 32px 32px 18px;
       width: 520px;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
     }
 
-    .header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
     .title-box {
-      background: #6c63ff;
+      background: #1a1a2e;
       border-radius: 8px;
       padding: 10px 32px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       font-size: 28px;
       font-weight: bold;
-      color: #fff;
-      width: 100%;
+      color: #e0e0ff;
       text-align: center;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
     }
 
     .clear-row {
       display: flex;
       justify-content: flex-end;
-      margin-bottom: 24px;
+      width: 520px;
+      margin-bottom: 20px;
     }
 
     .clear-btn {
@@ -136,15 +133,11 @@
   </style>
 </head>
 <body>
+  <div class="title-box">面積変換アプリ</div>
+  <div class="clear-row">
+    <button class="clear-btn" onclick="clearAll()">クリア</button>
+  </div>
   <div class="card">
-    <div class="header">
-      <div class="title-box">面積変換アプリ</div>
-    </div>
-
-    <div class="clear-row">
-      <button class="clear-btn" onclick="clearAll()">クリア</button>
-    </div>
-
     <div class="converters">
       <!-- 左：m² → 坪 -->
       <div class="converter">
